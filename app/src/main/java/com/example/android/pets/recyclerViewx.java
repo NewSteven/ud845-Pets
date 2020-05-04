@@ -17,7 +17,7 @@ public class recyclerViewx extends AppCompatActivity {
 
     private PetDbHelper mDbHelper;
 
-    ArrayList<PetContract> listaDatos;
+    ArrayList<dbasePrueba> listaDatos;
     RecyclerView recycler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +38,7 @@ public class recyclerViewx extends AppCompatActivity {
     private void consularDatos() {
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
         dbasePrueba usuario = null;
+        listaDatos = new ArrayList<>();
 
         // Perform a query on the pets table
         Cursor cursor = db.rawQuery("select * from " + PetContract.PetEntry.TABLE_NAME, null );
@@ -47,8 +48,10 @@ public class recyclerViewx extends AppCompatActivity {
             usuario = new dbasePrueba();
 
             usuario.setCOLUMN_PET_NAME(utilidadesPruebita.COLUMN_PET_NAME);
-
-
+            usuario.setCOLUMN_PET_RAZA(utilidadesPruebita.COLUMN_PET_RAZA);
+            usuario.setCOLUMN_PET_GENERO(utilidadesPruebita.COLUMN_PET_GENERO);
+            usuario.setCOLUMN_PET_PESO(utilidadesPruebita.COLUMN_PET_PESO);
+            listaDatos.add(usuario);
         }
 
     }
