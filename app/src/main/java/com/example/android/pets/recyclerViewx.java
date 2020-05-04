@@ -10,6 +10,8 @@ import com.example.android.pets.data.PetContract;
 import com.example.android.pets.data.PetDbHelper;
 
 import java.util.ArrayList;
+import com.example.android.pets.dbPrueba.dbasePrueba;
+import com.example.android.pets.utilidades.utilidadesPruebita;
 
 public class recyclerViewx extends AppCompatActivity {
 
@@ -35,20 +37,18 @@ public class recyclerViewx extends AppCompatActivity {
 
     private void consularDatos() {
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
-        PetContract.PetEntry usuario = null;
+        dbasePrueba usuario = null;
 
         // Perform a query on the pets table
         Cursor cursor = db.rawQuery("select * from " + PetContract.PetEntry.TABLE_NAME, null );
 
         while (cursor.moveToNext()){
 
-            usuario = new PetContract.PetEntry();
+            usuario = new dbasePrueba();
 
-            String currentID = cursor.getString(Integer.parseInt(PetContract.PetEntry._ID));
-            String currentName = cursor.getString(Integer.parseInt(PetContract.PetEntry.COLUMN_PET_NAME));
-            String currentBreed = cursor.getString(Integer.parseInt(PetContract.PetEntry.COLUMN_PET_BREED));
-            int currentGender = cursor.getInt(Integer.parseInt(PetContract.PetEntry.COLUMN_PET_GENDER));
-            int currentWeight = cursor.getInt(Integer.parseInt(PetContract.PetEntry.COLUMN_PET_WEIGHT));
+            usuario.setCOLUMN_PET_NAME(utilidadesPruebita.COLUMN_PET_NAME);
+
+
         }
 
     }
